@@ -1,4 +1,5 @@
-PaulY -- 2022-11-1 14:00: Updated Readme with all the required components, but not everything is corret... + all the other files
+PaulY -- 2022-11-1 14:00: Updated Readme with all the required components, but not everything is correct... + all the other files
 veritL -- 2022-11-2 3:18: Added design.pdf, design_wiki0.pdf, and flag.jpg
 veritL -- 2022-11-2 8:22: Added target send date to design.pdf
 PaulY -- 2022-11-2 12:15: Added login/sigup html files + added flask to the python file
+PaulY -- 2022-11-2 12:36: Added redirects to login/signup page from home(bug: html paragraph not enclosed in button tag is a button)
