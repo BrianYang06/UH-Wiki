@@ -2,8 +2,12 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route("/")
+def landing_page():
+    return render_template("landing_page.html")
+
+@app.route("/home")
 def home_page():
-    return render_template("home_page.html") #This will be used to show our homescreen
+    return render_template("home_page.html")
 
 @app.route("/login")
 def login_page():
