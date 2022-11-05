@@ -1,5 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session, request, redirect, url_for
+import os
+
+the_username = "verit" #Temp user bc we dont have a db set up
+the_password = "getstitches"
+
 app = Flask(__name__)
+app.secret_key = os.urandom(32)
 
 @app.route("/")
 def landing_page():
@@ -9,9 +15,32 @@ def landing_page():
 def home_page():
     return render_template("home_page.html")
 
-@app.route("/login")
+@app.route("/login", methods = ['GET', 'POST'])
 def login_page():
+    if 'username' in session:
+        if session['username'] == the_username and session['password'] == the_password:
+            return render_template("home_page.html")
+        else:
+            # Must highlight what the user did wrong
+            wrongdoings=""
+            if session['username'] != the_username:
+                wrongdoings+=' Username Wrong'
+            if session['password'] != the_password:
+                wrongdoings+=' Password Wrong'
+            return render_template("error.html",huhs=wrongdoings)
     return render_template("login.html")
+
+@app.route("/auth", methods=['GET', 'POST'])
+def authenticate():
+    session['username'] = request.form['username']
+    session['password'] = request.form['password']
+    return redirect(url_for('login_page'))
+
+@app.route('/logout')
+def logout():
+    # remove the username from the session if it's there
+    session.pop('username', None)
+    return redirect(url_for('login_page'))
 
 @app.route("/signup")
 def signup_page():
