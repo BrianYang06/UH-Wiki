@@ -1,11 +1,55 @@
-PaulY -- 2022-11-1 14:00: Updated Readme with all the required components, but not everything is correct... + all the other files
-veritL -- 2022-11-2 3:18: Added design.pdf, design_wiki0.pdf, and flag.jpg
-veritL -- 2022-11-2 8:22: Added target send date to design.pdf
-PaulY -- 2022-11-2 12:15: Added login/sigup html files + added flask to the python file
-PaulY -- 2022-11-2 12:36: Added redirects to login/signup page from home(bug: html paragraph not enclosed in button tag is a button)
-PaulY -- 2022-11-2 13:03: Fixed bug in previous devlog post
-veritL -- 2022-11-3 1:46: Revised design doc; Changes: 
-                          - turned __init__.py into multiple py files and updated component map to match 
+Uh?
+Brian Yang
+Justin Mohabir
+Verit Li
+pd 8
+---------------------
+<Project Title/Description>
+
+
+ ______   ______   __   __   __       ______   _______
+/_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\
+\:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__
+ \:\ \ \ \\:\/___/\\:\ \\ \ \\:\ \    \:\ \ \ \\:\ /____/\
+  \:\ \ \ \\::___\/_\:\_/.:\ \\:\ \____\:\ \ \ \\:\\_  _\/
+   \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \
+    \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
+==============================================================
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+PaulY -- 2022-11-1 14:00
+--------------------------------------------------------------
+Updated Readme with all the required components, but not everything is correct... + all the other files
+==============================================================
+veritL -- 2022-11-2 3:18
+--------------------------------------------------------------
+Added design.pdf, design_wiki0.pdf, and flag.jpg
+==============================================================
+veritL -- 2022-11-2 8:22
+--------------------------------------------------------------
+Added target send date to design.pdf
+==============================================================
+PaulY -- 2022-11-2 12:15
+--------------------------------------------------------------
+Added login/sigup html files + added flask to the python file
+==============================================================
+
+
+
+
+PaulY -- 2022-11-2 12:36
+--------------------------------------------------------------
+Added redirects to login/signup page from home(bug: html paragraph not enclosed in button tag is a button)
+==============================================================
+PaulY -- 2022-11-2 13:03
+--------------------------------------------------------------
+Fixed bug in previous devlog post
+==============================================================
+veritL -- 2022-11-3 1:46
+--------------------------------------------------------------
+Revised design doc; Changes:
+                          - turned __init__.py into multiple py files and updated component map to match
                           - added how to deal with "merge conflicts"
                           - added a check for if saved draft is outdated
 			  - now store a squence id in PARTIAL STORIES table
@@ -18,3 +62,6 @@ veritL -- 2022-11-3 1:46: Revised design doc; Changes:
                           - Full Story Page now also displays starting user, # of contributions to story
                           - added delete draft button to Create Story Page and Add-to-Story Page
 			  TODO: update and keep assigning Task Breakdown
+==============================================================
+
+
