@@ -75,3 +75,7 @@ paulY -- 2022-11-5 8:56
 --------------------------------------------------------------
 Login.py works now to take in command line arguments to append to the login data db
 ==============================================================
+paulY -- 2022-11-5 9:46
+--------------------------------------------------------------
+Can now signup to create a username and password with >0 letters that is added to db. Still need to check database for overlapping users.
+==============================================================
