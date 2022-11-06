@@ -1,5 +1,6 @@
 from flask import Flask, render_template, session, request, redirect, url_for
 import os
+import login #login.py
 
 the_username = "verit" #Temp user bc we dont have a db set up
 the_password = "getstitches"
@@ -42,9 +43,14 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('login_page'))
 
-@app.route("/signup")
+@app.route("/signup", methods = ['GET', 'POST'])
 def signup_page():
     return render_template("signup.html")
+
+@app.route("/signup_response", methods=['GET', 'POST'])
+def success():
+    os.system(f"py login.py {request.form['username']} {request.form['password']}")
+    return redirect(url_for('login_page'))
 
 if __name__ == "__main__":
     app.debug = True #Remove when finished with the project
