@@ -28,7 +28,7 @@ def login_page():
                 wrongdoings+=' Username Wrong'
             if session['password'] != the_password:
                 wrongdoings+=' Password Wrong'
-            return render_template("error.html",huhs=wrongdoings)
+            return render_template("error.html", huhs=wrongdoings)
     return render_template("login.html")
 
 @app.route("/auth", methods=['GET', 'POST'])
@@ -49,8 +49,11 @@ def signup_page():
 
 @app.route("/signup_response", methods=['GET', 'POST'])
 def success():
-    os.system(f"py login.py {request.form['username']} {request.form['password']}")
-    return redirect(url_for('login_page'))
+    if len(request.form['username']) == 0 or len(request.form['password']) == 0: #change conditionals to check if it is int db
+        return render_template("signup.html")
+    else:
+        os.system(f"py login.py {request.form['username']} {request.form['password']}")
+        return render_template("signup_success.html")
 
 if __name__ == "__main__":
     app.debug = True #Remove when finished with the project
