@@ -71,3 +71,7 @@ paulY -- 2022-11-5 7:48
 --------------------------------------------------------------
 Created login database with python file that'll be able to create ID and add command line arguments as username and passwords to table. Command line arguments aren't perfect yet but ssh into school computer to do this make brain hurt.
 ==============================================================
+paulY -- 2022-11-5 8:56
+--------------------------------------------------------------
+Login.py works now to take in command line arguments to append to the login data db
+==============================================================
