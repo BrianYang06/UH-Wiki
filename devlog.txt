@@ -83,3 +83,6 @@ paulY -- 2022-11-7 12:29
 --------------------------------------------------------------
 Changed the login to what verit provided in 19_session (much cleaner and doesn't use multiple html files to indicate success in login) | Implemented that for signup
 ==============================================================
+paulY -- 2022-11-7 17:41
+
+login.py works for what it does but not incorporated into the __init__.py| import files now instead of using OS and SYS module
