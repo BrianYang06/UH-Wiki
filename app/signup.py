@@ -1,6 +1,5 @@
 import sqlite3
 from pprint import pprint #for testing by printing db
-import sys
 
 #for command line argument
 

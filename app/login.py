@@ -1,7 +1,5 @@
 #Checks for login values avalible in the sqlite3 db
 import sqlite3
-import sys
-
 
 #PROBLEM how to send varible to another file
 
