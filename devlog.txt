@@ -65,7 +65,7 @@ Updated devlog to template provided
 ==============================================================
 paulY -- 2022-11-5 3:01
 --------------------------------------------------------------
-Took 19_session and implemented it into the wiki. Now we can login/out. 
+Took 19_session and implemented it into the wiki. Now we can login/out.
 ==============================================================
 paulY -- 2022-11-5 7:48
 --------------------------------------------------------------
@@ -78,4 +78,8 @@ Login.py works now to take in command line arguments to append to the login data
 paulY -- 2022-11-5 9:46
 --------------------------------------------------------------
 Can now signup to create a username and password with >0 letters that is added to db. Still need to check database for overlapping users.
+==============================================================
+paulY -- 2022-11-7 12:29
+--------------------------------------------------------------
+Changed the login to what verit provided in 19_session (much cleaner and doesn't use multiple html files to indicate success in login) | Implemented that for signup
 ==============================================================
