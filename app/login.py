@@ -1,32 +1,22 @@
+#Checks for login values avalible in the sqlite3 db
 import sqlite3
-from pprint import pprint
 import sys
 
-db = sqlite3.connect('login.db')
-c  = db.cursor()
 
-#for command line arguments
-
-
-
-#testing additions
-#c.execute("CREATE TABLE IF NOT EXISTS logins(user TEXT, password TEXT, id INTEGER)")
-#c.execute("INSERT INTO logins VALUES(?, ?,?)", ("jim", "jimothy", 1))
-#c.execute("SELECT * FROM logins")
-#print(c.fetchall())
+#PROBLEM how to send varible to another file
 
 def main(user, passw):
-	c.execute("CREATE TABLE IF NOT EXISTS logins(user TEXT, password TEXT, id INTEGER)")
-	c.execute("SELECT * FROM logins")
-	idvalue = len(c.fetchall())
-	c.execute("INSERT INTO logins VALUES(?, ?, ?)", (user, passw, idvalue))
-	c.execute("SELECT * FROM logins")
-	pprint(c.fetchall())
-
-
-
-if __name__ == "__main__":
-	main(sys.argv[1], sys.argv[2])
-
-db.commit()
-db.close()
+    db = sqlite3.connect('login.db')
+    c = db.cursor()
+    #check if table exists
+    c.execute(''' SELECT count(name) FROM sqlite_master WHERE type = 'table' AND name = 'logins' ''')
+    if c.fetchone()[0] == 1:
+        c.execute("SELECT * FROM logins")
+        list = c.fetchall() #makes the entire db into a list that stores tuples
+        for x in list:
+            if (x[0] == user) and (x[1] == passw):
+                db.close()
+                return 1
+            else:
+                db.close()
+                return 0
