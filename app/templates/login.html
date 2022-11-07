@@ -7,15 +7,17 @@
   <body>
     <center><h1>Login</h1></center>
 
-    <center><h2>verit <br> getstitches</h2></center>
+    <center><h2>verit<br> getstitches</h2></center>
 
-    <form action="/auth" method="post">
+    <form action="/login" method="post">
       User
       <input type="text" name="username">
       Pass
       <input type = text name=password>
       <input type="submit" name="sub1">
     </form>
+
+    	<h2>{{ authentication_message }}</h2>s
 
   </body>
 </html>

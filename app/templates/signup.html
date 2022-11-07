@@ -9,12 +9,19 @@
   </body>
   <center><h1>Signup</h1></center>
 
-  <form action="/signup_response" method="post">
+  <form action="/signup" method="post">
     Create User
     <input type= "text" name= "username">
     Create Pass
     <input type = "text" name= "password">
     <input type= "submit" name= "sub1">
   </form>
+
+  <h2>{{ authentication_message }}</h2>
+
+  <button type="button" name="login">
+    <a href="{{ url_for('landing_page') }}">Home</a>
+  </button>
+  
 
 </html>
