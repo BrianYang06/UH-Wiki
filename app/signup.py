@@ -30,9 +30,9 @@ def check_user_conflict(user, passw):
 		password = True
 	
 	if username == True:
-		return 'user'
+		return 'user' #Username is taken
 	elif password == True:
-		return 'pass'
+		return 'pass' #Password is too short
 	else: 
-		return '1'
+		return '1' #Gud
 
