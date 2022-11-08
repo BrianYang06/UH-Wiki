@@ -1,9 +1,10 @@
 from flask import Flask, render_template, session, request, redirect, url_for
-import os #DONT USE OS BC SLOW for calling files
+import os
 import login #login.py
 import signup #signup.py
 
-the_username = "verit" #Temp user bc we dont have a db set up
+#Temp user bc we dont have a db set up
+the_username = "verit"
 the_password = "getstitches"
 
 app = Flask(__name__)
@@ -42,8 +43,7 @@ def login_page():
 
 @app.route('/logout')
 def logout():
-    # remove the username from the session if it's there
-    session.pop('username', None)
+    session.pop('username', None) # remove the username from the session if it's there
     return redirect(url_for('landing_page'))
 
 @app.route("/signup", methods = ['GET', 'POST'])
