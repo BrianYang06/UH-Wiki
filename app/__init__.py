@@ -50,12 +50,15 @@ def logout():
 def signup_page():
 	session.pop('username', None)#Just in case they somehow circumnavigate being logged in and trying to sign up
 	if request.method == 'POST':
-		if len(request.form['username']) == 0 or len(request.form['password']) == 0: #change conditionals to check if it is int db
-			return render_template("signup.html", authentication_message = "FAILURE")
-		else:
-			signup.main(request.form['username'], request.form['password'])
+		problem = signup.check_user_conflict(request.form['username'], request.form['password']) #cycle over types of problems to find what it is
+		if  problem == 'user': #change conditionals to check if it is in db
+			return render_template("signup.html", authentication_message = "Username taken")
+		if problem == 'pass':
+			return render_template("signup.html", authentication_message = "Create a longer password")
+		elif problem == '1':
+			signup.add(request.form['username'], request.form['password'])
 		        #os.system(f"py login.py {request.form['username']} {request.form['password']}")
-			return render_template("signup.html", authentication_message = "success")
+			return render_template("signup.html", authentication_message = "Acount created")
 	return render_template("signup.html")
 
 if __name__ == "__main__":

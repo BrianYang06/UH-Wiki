@@ -23,16 +23,25 @@ def check_user_conflict(user, passw):
 		c.execute("SELECT * FROM logins")
 		list = c.fetchall() #makes the entire db into a list that stores tuples
 		for usernames in list:
-			print(usernames[0])
+			#print(usernames[0])
 			if usernames[0] == user:
 				username = True
-	if passw < 8:
+	if len(passw) < 8:
 		password = True
-	
+
 	if username == True:
+		db.commit()
+		db.close()
 		return 'user' #Username is taken
 	elif password == True:
+		db.commit()
+		db.close()
 		return 'pass' #Password is too short
-	else: 
+	else:
+		db.commit()
+		db.close()
 		return '1' #Gud
 
+
+def test():
+	return True
