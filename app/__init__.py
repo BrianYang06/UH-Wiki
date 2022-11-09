@@ -24,17 +24,14 @@ def home_page():
 @app.route("/login", methods = ['GET', 'POST'])
 def login_page():
     if request.method == 'POST': #if after submitting a user and pass through login form
-	#	if (os.system(f"login.py {request.form['username']"}  {request.form['password']}))
-        if (the_username == request.form['username'] and the_password == request.form['password']): #if user and pass correct
+        binaryTF = login.exist(request.form['username'], request.form['password'])
+        if binaryTF == 1: #if user and pass correct
             session['username'] = request.form['username'] #save username to session
             return redirect(url_for('landing_page')) #redirect to welcome
-        else:  #user or pass are wrong
-            wrongdoings = ''
-            if request.form['username'] != the_username:
-                wrongdoings += 'User not found, please try again'
-            elif request.form['password'] != the_password:
-                wrongdoings += 'Incorrect password, please try again'
-            return render_template('login.html', authentication_message = wrongdoings)
+        elif binaryTF == 'pass':  #user or pass are wrong
+            return render_template('login.html', authentication_message = 'Incorrect password, please try again')
+        elif binaryTF == 'user':
+            return render_template('login.html', authentication_message = 'User not found, please try again')
     else: #accessed login page not from submitting login form
         if 'username' in session: #if already logged in
             return redirect(url_for('home_page')) #no logging in a second time!!
