@@ -91,3 +91,6 @@ paulY -- 2022-11-8 16:52
 --------------------------------------------------------------
 Added function in signup to check for username conflicts and if password is too short
 ==============================================================
+paulY -- 2022-11-9 18:38
+
+Implemented that function into __init__ (tested and word but more extensive testing required)
