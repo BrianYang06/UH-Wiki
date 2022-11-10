@@ -1,4 +1,4 @@
-PROJECT NAME by UH? 
+Arvys' by UH? 
 == 
 
 Project Manager : Brian Yang   
