@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Create Story</title>
+  </head>
+
+  <body>
+    <center><h1>ALL OF THE STORIES</h1></center>
+    {% for row in data %}
+    <h2> {{ row[0] }}</h2>
+      {{ row[1] }}
+    {% endfor %}
+    <br>
+    <br>
+
+    <button type="button" name="leave">
+      <a href="{{ url_for('home_page') }}">go home</a>
+    </button>
+
+  </body>
+
+
+</html>

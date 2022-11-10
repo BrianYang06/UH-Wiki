@@ -99,3 +99,11 @@ paulY -- 2022-11-9 18:54
 --------------------------------------------------------------
 Implemented login.py into init (tested and worked but more extensive testing required)
 ==============================================================
+justinM -- 2022-11-9 21:30
+--------------------------------------------------------------
+Added the ability to add stories in the create_story.html file the ability view those stories in the view_stories link
+==============================================================
+justinM -- 2022-11-9 21:30
+--------------------------------------------------------------
+Added the ability view stories in the view_stories link with jinja for loops
+==============================================================

@@ -15,10 +15,10 @@ def exist(user, passw):
         list = c.fetchall() #makes the entire db into a list that stores tuples
         for x in list:
             if (x[0] == user):
-                user_true = True 
+                user_true = True
             if (x[1] == passw):
                 pass_true = True
-    
+
     if user_true and pass_true:
         db.close()
         return 1
@@ -28,4 +28,3 @@ def exist(user, passw):
     elif pass_true != True:
         db.close()
         return 'pass'
-

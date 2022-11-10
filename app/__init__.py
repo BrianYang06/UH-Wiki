@@ -2,6 +2,7 @@ from flask import Flask, render_template, session, request, redirect, url_for
 import os
 import login #login.py
 import signup #signup.py
+import story #create_story.py
 
 #Temp user bc we dont have a db set up
 the_username = "verit"
@@ -53,10 +54,23 @@ def signup_page():
 		if problem == 'pass':
 			return render_template("signup.html", authentication_message = "Create a longer password")
 		elif problem == '1':
-			signup.add(request.form['username'], request.form['password'])
+			signup.add(request.form['username'], request.form['username'],)
 		        #os.system(f"py login.py {request.form['username']} {request.form['password']}")
 			return render_template("signup.html", authentication_message = "Acount created")
 	return render_template("signup.html")
+
+###############################################################This is new
+@app.route("/create_story_page", methods = ['GET', 'POST'])
+def create_story_page():
+	if request.method == 'POST':
+		story.add_story(request.form['story_title'],request.form['story_content'],)
+		return render_template('create_story.html', authentication_message="Success!")
+	else:
+		return render_template('create_story.html', authentication_message="")
+
+@app.route("/view_story_page", methods = ['GET', 'POST'])
+def view_story_page():
+	return render_template('view_stories.html',data=story.view_stories())
 
 if __name__ == "__main__":
     app.debug = True #Remove when finished with the project

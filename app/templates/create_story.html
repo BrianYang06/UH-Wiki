@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Create Story</title>
+  </head>
+  <body>
+    <center><h1>Create Ya Story Homie!</h1></center>
+
+    <form action="/create_story_page" method="post">
+      Story Title
+      <input type= "text" name= "story_title">
+      <br>
+
+      <br>
+      enter story below
+      <br>
+
+      <textarea rows = "5" cols = "60" name = "story_content">
+      </textarea>
+      <br>
+
+      <input type= "submit" name= "sub1">
+    </form>
+
+    <h2>{{ authentication_message }}</h2>
+    <br>
+    <button type="button" name="leave">
+      <a href="{{ url_for('home_page') }}">go home</a>
+    </button>
+
+  </body>
+
+
+</html>
