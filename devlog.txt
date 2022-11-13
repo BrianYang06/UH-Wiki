@@ -111,3 +111,9 @@ justinM -- 2022-11-12 21:30
 --------------------------------------------------------------
 Added the ability view stories created on the homepage link with jinja if statements
 ==============================================================
+justinM -- 2022-11-13 00:27
+--------------------------------------------------------------
+Squashed a bug in __init__.py in signup_page(): bug was that when a user tired to sign up, username was getting added as the password, it was
+                                                signup.add(request.form['username'], request.form['username']) instead of
+                                                signup.add(request.form['username'], request.form['password'])
+==============================================================

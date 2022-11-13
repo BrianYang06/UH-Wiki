@@ -55,7 +55,7 @@ def signup_page():
 		if problem == 'pass':
 			return render_template("signup.html", authentication_message = "Create a longer password")
 		elif problem == '1':
-			signup.add(request.form['username'], request.form['username'],)
+			signup.add(request.form['username'], request.form['password'])
 		        #os.system(f"py login.py {request.form['username']} {request.form['password']}")
 			return render_template("signup.html", authentication_message = "Acount created")
 	return render_template("signup.html")
