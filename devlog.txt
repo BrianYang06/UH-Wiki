@@ -107,3 +107,7 @@ justinM -- 2022-11-9 21:30
 --------------------------------------------------------------
 Added the ability view stories in the view_stories link with jinja for loops
 ==============================================================
+justinM -- 2022-11-12 21:30
+--------------------------------------------------------------
+Added the ability view stories created on the homepage link with jinja if statements
+==============================================================

@@ -9,7 +9,7 @@ the_username = "verit"
 the_password = "getstitches"
 
 app = Flask(__name__)
-app.secret_key = os.urandom(32)
+app.secret_key = 'foo'
 
 @app.route("/")
 def landing_page():
@@ -20,7 +20,7 @@ def landing_page():
 
 @app.route("/home")
 def home_page():
-    return render_template("home_page.html")
+    return render_template("home_page.html", data=story.view_stories(), user_id = str(session['id']))
 
 @app.route("/login", methods = ['GET', 'POST'])
 def login_page():
@@ -28,6 +28,7 @@ def login_page():
         binaryTF = login.exist(request.form['username'], request.form['password'])
         if binaryTF == 1: #if user and pass correct
             session['username'] = request.form['username'] #save username to session
+            session['id'] = login.user_to_id(session['username']) #save id
             return redirect(url_for('landing_page')) #redirect to welcome
         elif binaryTF == 'pass':  #user or pass are wrong
             return render_template('login.html', authentication_message = 'Incorrect password, please try again')
@@ -62,9 +63,13 @@ def signup_page():
 ###############################################################This is new
 @app.route("/create_story_page", methods = ['GET', 'POST'])
 def create_story_page():
+	print(session['username'])
 	if request.method == 'POST':
-		story.add_story(request.form['story_title'],request.form['story_content'],)
-		return render_template('create_story.html', authentication_message="Success!")
+		if story.story_conflict(request.form['story_title']):
+			return render_template('create_story.html', authentication_message="Title Already Exists")
+		else:
+			story.add_story(request.form['story_title'],request.form['story_content'],session['id'])
+			return render_template('create_story.html', authentication_message="Success!")
 	else:
 		return render_template('create_story.html', authentication_message="")
 

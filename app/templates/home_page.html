@@ -19,5 +19,15 @@
       <a href="{{ url_for('view_story_page') }}">view stories</a>
     </button>
 
+    <br>
+
+    <h1> Stories Edited </h1>
+    {% for row in data %}
+      {% if row[3] == user_id -%}
+        <h2> {{ row[0] }}</h2>
+          {{ row[1] }}
+      {% endif %}
+    {% endfor %}
+
   </body>
 </html>

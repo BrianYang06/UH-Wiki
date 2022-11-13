@@ -28,3 +28,13 @@ def exist(user, passw):
     elif pass_true != True:
         db.close()
         return 'pass'
+
+def user_to_id(user):
+	db = sqlite3.connect('login.db')
+	c  = db.cursor()
+	c.execute("SELECT * FROM logins")
+	all_users = c.fetchall()
+	for row in all_users:
+		if row[0] == user:
+			return row[2]
+	return None
