@@ -87,14 +87,28 @@ def view_story_page():
 
 @app.route("/add_to_story_page", methods = ['GET', 'POST'])
 def add_to_story_page():
-    print(request.args)
-    print(list(request.args.keys())[0])
-    story_id = list(request.args.keys())[0]
+    #print(request.args)
+    #print(list(request.args.keys())[0])
+    
+    user_id = session['id']
+    added_content = ''
+    story_title = ''
+    auth = ''
+    if request.method == 'POST':       
+        added_content = request.form['story_content']
+        story.add_to_story(session['story_id'], added_content, user_id)      
+        auth = "success!"
+    else:
+        session['story_id']=list(request.args.keys())[0]
+    
     #Needed: a function to take the story id and get the latest addition
     #Needed: a function to take the story id and get title
     #Needed: a function to make a record in partial_stories table
     #Needed: a function to update the record in full_stories table
-    return render_template('add_to_story.html', title = "temp title", last_addition = "temp content", authentication_message = "temp auth message")
+    story_title = story.storyId_to_title(session['story_id'])
+    story_most_recent = story.storyId_to_most_recent_addition(session['story_id'])
+    return render_template('add_to_story.html', title = story_title, last_addition = story_most_recent, \
+                           authentication_message = auth)
  
 
 if __name__ == "__main__":

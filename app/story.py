@@ -77,7 +77,7 @@ def storyId_to_title(story_id):
     c  = db.cursor()
     c.execute("CREATE TABLE IF NOT EXISTS full_stories(title TEXT, story_content TEXT, storyId INTEGER, most_recent_addition TEXT)")
     c.execute("SELECT title FROM full_stories WHERE storyId = ?", (story_id))
-    title = c.fetchall[0][0]
+    title = c.fetchall()[0][0] #[(title,)]
     return title
  
 #gets corresponding most recent addition to a storyId   
@@ -86,7 +86,7 @@ def storyId_to_most_recent_addition(story_id):
     c  = db.cursor()
     c.execute("CREATE TABLE IF NOT EXISTS full_stories(title TEXT, story_content TEXT, storyId INTEGER, most_recent_addition TEXT)")
     c.execute("SELECT most_recent_addition FROM full_stories WHERE storyId = ?", (story_id))
-    most_recent_addition = c.fetchall[0][0]
+    most_recent_addition = c.fetchall()[0][0]
     return most_recent_addition
 
 #gets corresponding full story content to a storyId   
@@ -95,7 +95,7 @@ def storyId_to_full_content(story_id):
     c  = db.cursor()
     c.execute("CREATE TABLE IF NOT EXISTS full_stories(title TEXT, story_content TEXT, storyId INTEGER, most_recent_addition TEXT)")
     c.execute("SELECT story_content FROM full_stories WHERE storyId = ?", (story_id))
-    full_content = c.fetchall[0][0]
+    full_content = c.fetchall()[0][0]
     return full_content
 
 #updates the full_stories table after somebody has added content

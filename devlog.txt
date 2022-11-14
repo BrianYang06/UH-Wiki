@@ -141,4 +141,8 @@ Added many untested functions to story.py:
 				- add_to_story(story_id, added_content, user_id) # updates the full_stories table AND partial_stories table after somebody has added content  
 Form for going to adding-to-a-story from the view all stories now is GET not POST
 ==============================================================
-
+veritL -- 2022-11-14 14:02 
+--------------------------------------------------------------
+Test untested functions
+Added a story_id key in the session dictionary
+NEED to make it so update_full_story(story_id, added_content) updates the most_recent_addition collumn in the table
