@@ -130,3 +130,15 @@ Started on the adding-to-stories page:
    	 	- a function to make a record in partial_stories table
     		- a function to update the record in full_stories table
 ==============================================================
+veritL -- 2022-11-14 13:12 
+--------------------------------------------------------------
+Added many untested functions to story.py:
+				- storyId_to_title(story_id)
+				- storyId_to_most_recent_addition(story_id)
+				- storyId_to_full_content(story_id)
+				- update_full_story(story_id, added_content) #updates the full_stories table after somebody has added content
+				- update_partial_stories(story_id, added_content, user_id) #updates partial_stories table when an addition is made to a story
+				- add_to_story(story_id, added_content, user_id) # updates the full_stories table AND partial_stories table after somebody has added content  
+Form for going to adding-to-a-story from the view all stories now is GET not POST
+==============================================================
+

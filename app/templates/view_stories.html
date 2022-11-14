@@ -11,7 +11,7 @@
 		<h2> {{ row[0] }}   id: {{ row[2] }}</h2>
 		{{ row[3] }}
 		
-		<form action="/add_to_story_page" method="post">
+		<form action="/add_to_story_page" method="get">
 			<input type= "submit" name= {{ row[2] }}>
 		</form>
 	

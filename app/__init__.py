@@ -87,7 +87,9 @@ def view_story_page():
 
 @app.route("/add_to_story_page", methods = ['GET', 'POST'])
 def add_to_story_page():
-    print(request.form)
+    print(request.args)
+    print(list(request.args.keys())[0])
+    story_id = list(request.args.keys())[0]
     #Needed: a function to take the story id and get the latest addition
     #Needed: a function to take the story id and get title
     #Needed: a function to make a record in partial_stories table

@@ -58,7 +58,7 @@ def storyIds_to_title_and_story_content(storyId_list):
     db = sqlite3.connect('login.db')
     c  = db.cursor()
     c.execute("CREATE TABLE IF NOT EXISTS full_stories(title TEXT, story_content TEXT, storyId INTEGER, most_recent_addition TEXT)")
-    execute_string = "SELECT title, story_content FROM full_stories WHERE"
+    #execute_string = "SELECT title, story_content FROM full_stories WHERE"
     result = [] #a list of tuples containing the title and story content 
     for story_id in storyId_list:
         print(story_id[0])
@@ -68,3 +68,59 @@ def storyIds_to_title_and_story_content(storyId_list):
         result += c.fetchall()
         #print(result)
     return result
+    
+    
+#NEW AND UNTESTED below -------------------------------------------------------------------
+#gets corresponding title to a storyId  
+def storyId_to_title(story_id):
+    db = sqlite3.connect('login.db')
+    c  = db.cursor()
+    c.execute("CREATE TABLE IF NOT EXISTS full_stories(title TEXT, story_content TEXT, storyId INTEGER, most_recent_addition TEXT)")
+    c.execute("SELECT title FROM full_stories WHERE storyId = ?", (story_id))
+    title = c.fetchall[0][0]
+    return title
+ 
+#gets corresponding most recent addition to a storyId   
+def storyId_to_most_recent_addition(story_id):
+    db = sqlite3.connect('login.db')
+    c  = db.cursor()
+    c.execute("CREATE TABLE IF NOT EXISTS full_stories(title TEXT, story_content TEXT, storyId INTEGER, most_recent_addition TEXT)")
+    c.execute("SELECT most_recent_addition FROM full_stories WHERE storyId = ?", (story_id))
+    most_recent_addition = c.fetchall[0][0]
+    return most_recent_addition
+
+#gets corresponding full story content to a storyId   
+def storyId_to_full_content(story_id):
+    db = sqlite3.connect('login.db')
+    c  = db.cursor()
+    c.execute("CREATE TABLE IF NOT EXISTS full_stories(title TEXT, story_content TEXT, storyId INTEGER, most_recent_addition TEXT)")
+    c.execute("SELECT story_content FROM full_stories WHERE storyId = ?", (story_id))
+    full_content = c.fetchall[0][0]
+    return full_content
+
+#updates the full_stories table after somebody has added content
+def update_full_story(story_id, added_content):
+    db = sqlite3.connect('login.db')
+    c  = db.cursor()
+    c.execute("CREATE TABLE IF NOT EXISTS full_stories(title TEXT, story_content TEXT, storyId INTEGER, most_recent_addition TEXT)")
+    full_content = storyId_to_full_content(story_id)
+    full_content += ' ' + added_content
+    c.execute("UPDATE full_stories SET story_content = ? WHERE storyId = ?", (full_content, story_id))
+    db.commit()
+    db.close()
+
+#updates partial_stories table when an addition is made to a story
+def update_partial_stories(story_id, added_content, user_id):
+    db = sqlite3.connect('login.db')
+    c  = db.cursor()
+    c.execute("CREATE TABLE IF NOT EXISTS partial_stories(userId INTEGER, storyId INTEGER, addition_content TEXT, sequenceId INTEGER)")
+    c.execute("SELECT * FROM partial_stories WHERE storyId = ?", (story_id))
+    sequence_index = len(c.fetchall())
+    c.execute("INSERT INTO partial_stories VALUES(?, ?, ?, ?)", (user_id, story_id, added_content, sequence_index))
+    db.commit()
+    db.close()
+
+# updates the full_stories table AND partial_stories table after somebody has added content  
+def add_to_story(story_id, added_content, user_id):
+    update_full_story(story_id, added_content)
+    update_partial_stories(story_id, added_content, user_id)
