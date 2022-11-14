@@ -13,14 +13,17 @@ app.secret_key = 'foo'
 
 @app.route("/")
 def landing_page():
-	if 'username' in session:
-		return redirect(url_for('home_page'))
-	else:
-		return render_template("landing_page.html")
+    if 'username' in session:
+        #session.pop('username', None)
+        #session.pop('id', None)
+        return redirect(url_for('home_page'))
+    else:
+        return render_template("landing_page.html")
 
 @app.route("/home")
 def home_page():
-    return render_template("home_page.html", data=story.view_stories(), user_id = str(session['id']))
+    print(story.storyIds_to_title_and_story_content(story.find_my_stories(session['id'])))
+    return render_template("home_page.html", data=story.storyIds_to_title_and_story_content(story.find_my_stories(str(session['id']))))
 
 @app.route("/login", methods = ['GET', 'POST'])
 def login_page():
@@ -29,6 +32,8 @@ def login_page():
         if binaryTF == 1: #if user and pass correct
             session['username'] = request.form['username'] #save username to session
             session['id'] = login.user_to_id(session['username']) #save id
+            print(session['username'])
+            print(session['id'])
             return redirect(url_for('landing_page')) #redirect to welcome
         elif binaryTF == 'pass':  #user or pass are wrong
             return render_template('login.html', authentication_message = 'Incorrect password, please try again')
@@ -60,7 +65,6 @@ def signup_page():
 			return render_template("signup.html", authentication_message = "Acount created")
 	return render_template("signup.html")
 
-###############################################################This is new
 @app.route("/create_story_page", methods = ['GET', 'POST'])
 def create_story_page():
 	print(session['username'])
@@ -68,7 +72,7 @@ def create_story_page():
 		if story.story_conflict(request.form['story_title']):
 			return render_template('create_story.html', authentication_message="Title Already Exists")
 		else:
-			story.add_story(request.form['story_title'],request.form['story_content'],session['id'])
+			story.create_story(request.form['story_title'],request.form['story_content'],session['id'])
 			return render_template('create_story.html', authentication_message="Success!")
 	else:
 		return render_template('create_story.html', authentication_message="")
@@ -76,6 +80,20 @@ def create_story_page():
 @app.route("/view_story_page", methods = ['GET', 'POST'])
 def view_story_page():
 	return render_template('view_stories.html',data=story.view_stories())
+
+
+###############################################################This is new
+#UNDER CONTRUCTION
+
+@app.route("/add_to_story_page", methods = ['GET', 'POST'])
+def add_to_story_page():
+    print(request.form)
+    #Needed: a function to take the story id and get the latest addition
+    #Needed: a function to take the story id and get title
+    #Needed: a function to make a record in partial_stories table
+    #Needed: a function to update the record in full_stories table
+    return render_template('add_to_story.html', title = "temp title", last_addition = "temp content", authentication_message = "temp auth message")
+ 
 
 if __name__ == "__main__":
     app.debug = True #Remove when finished with the project

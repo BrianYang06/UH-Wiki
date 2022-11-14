@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>add-to-story</title>
+  </head>
+  <body>
+	
+	<center><h1>Add to da Story Homie!</h1></center>
+	
+	{{ title }}
+	<br>
+	{{ last_addition }}
+	
+	<br>
+	<br>
+	
+	<form action="/add_to_story_page" method="post">
+      enter story below
+      <br>
+
+      <textarea rows = "5" cols = "60" name = "story_content">
+      </textarea>
+      <br>
+
+      <input type= "submit" name= "sub1">
+    </form>
+
+    <h2>{{ authentication_message }}</h2>
+    <br>
+    <button type="button" name="leave">
+      <a href="{{ url_for('home_page') }}">go home</a>
+    </button>
+  
+  
+  
+  </body>
+</html>

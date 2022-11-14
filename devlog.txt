@@ -111,9 +111,22 @@ justinM -- 2022-11-12 21:30
 --------------------------------------------------------------
 Added the ability view stories created on the homepage link with jinja if statements
 ==============================================================
-justinM -- 2022-11-13 00:27
+veritL -- 2022-11-13 00:27
 --------------------------------------------------------------
 Squashed a bug in __init__.py in signup_page(): bug was that when a user tired to sign up, username was getting added as the password, it was
                                                 signup.add(request.form['username'], request.form['username']) instead of
                                                 signup.add(request.form['username'], request.form['password'])
+==============================================================
+veritL -- 2022-11-14 02:29
+--------------------------------------------------------------
+full_stories table no longer stores authors.
+full_stories table now stores last addition.
+Changed viewing stories on the homepage such that the stories are chosen by looking through the partial_stories table.
+Started on the adding-to-stories page:
+	- Started the html template
+	- needed functions:
+		- a function to take the story id and get the latest addition
+    		- a function to take the story id and get title
+   	 	- a function to make a record in partial_stories table
+    		- a function to update the record in full_stories table
 ==============================================================

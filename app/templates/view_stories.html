@@ -7,9 +7,14 @@
 
   <body>
     <center><h1>ALL OF THE STORIES</h1></center>
-    {% for row in data %}
-    <h2> {{ row[0] }}</h2>
-      {{ row[1] }}
+	{% for row in data %}
+		<h2> {{ row[0] }}   id: {{ row[2] }}</h2>
+		{{ row[3] }}
+		
+		<form action="/add_to_story_page" method="post">
+			<input type= "submit" name= {{ row[2] }}>
+		</form>
+	
     {% endfor %}
     <br>
     <br>

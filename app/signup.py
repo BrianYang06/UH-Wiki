@@ -8,8 +8,8 @@ def add(user, passw):
 	c.execute("SELECT * FROM logins")
 	idvalue = len(c.fetchall()) #Creates id based on existing amounts of values in database
 	c.execute("INSERT INTO logins VALUES(?, ?, ?)", (user, passw, idvalue))
-	#c.execute("SELECT * FROM logins")
-	#pprint(c.fetchall()) #testing
+	c.execute("SELECT * FROM logins")
+	pprint(c.fetchall()) #testing
 	db.commit()
 	db.close()
 
