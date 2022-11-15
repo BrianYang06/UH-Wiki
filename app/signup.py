@@ -1,10 +1,11 @@
 import sqlite3
 from pprint import pprint #for testing by printing db
 
+DB_FILE = "discobandit.db"
+
 def add(user, passw):
-	db = sqlite3.connect('login.db')
+	db = sqlite3.connect(DB_FILE)
 	c  = db.cursor()
-	c.execute("CREATE TABLE IF NOT EXISTS logins(user TEXT, password TEXT, id INTEGER)")
 	c.execute("SELECT * FROM logins")
 	idvalue = len(c.fetchall()) #Creates id based on existing amounts of values in database
 	c.execute("INSERT INTO logins VALUES(?, ?, ?)", (user, passw, idvalue))
@@ -14,7 +15,7 @@ def add(user, passw):
 	db.close()
 
 def check_user_conflict(user, passw):
-	db = sqlite3.connect('login.db')
+	db = sqlite3.connect(DB_FILE)
 	c  = db.cursor()
 	c.execute(''' SELECT count(name) FROM sqlite_master WHERE type = 'table' AND name = 'logins' ''')
 	username = False

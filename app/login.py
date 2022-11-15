@@ -1,10 +1,10 @@
 #Checks for login values avalible in the sqlite3 db
 import sqlite3
 
-#PROBLEM how to send varible to another file
+DB_FILE = "discobandit.db"
 
 def exist(user, passw):
-    db = sqlite3.connect('login.db')
+    db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     #check if table exists
     pass_true = False
@@ -30,7 +30,7 @@ def exist(user, passw):
         return 'pass'
 
 def user_to_id(user):
-	db = sqlite3.connect('login.db')
+	db = sqlite3.connect(DB_FILE)
 	c  = db.cursor()
 	c.execute("SELECT * FROM logins")
 	all_users = c.fetchall()

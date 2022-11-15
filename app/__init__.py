@@ -3,10 +3,9 @@ import os
 import login #login.py
 import signup #signup.py
 import story #create_story.py
+import sqlite3
 
-#Temp user bc we dont have a db set up
-the_username = "verit"
-the_password = "getstitches"
+DB_FILE = "discobandit.db"
 
 app = Flask(__name__)
 app.secret_key = 'foo'
@@ -79,7 +78,7 @@ def create_story_page():
 
 @app.route("/view_story_page", methods = ['GET', 'POST'])
 def view_story_page():
-	return render_template('view_stories.html',data=story.view_stories())
+	return render_template('view_stories.html',data=story.view_stories(session['id']))
 
 
 ###############################################################This is new
@@ -93,24 +92,25 @@ def add_to_story_page():
     user_id = session['id']
     added_content = ''
     story_title = ''
-    auth = ''
+    
     if request.method == 'POST':       
         added_content = request.form['story_content']
-        story.add_to_story(session['story_id'], added_content, user_id)      
-        auth = "success!"
+        story.add_to_story(session['story_id'], added_content, user_id)
     else:
         session['story_id']=list(request.args.keys())[0]
-    
-    #Needed: a function to take the story id and get the latest addition
-    #Needed: a function to take the story id and get title
-    #Needed: a function to make a record in partial_stories table
-    #Needed: a function to update the record in full_stories table
+
     story_title = story.storyId_to_title(session['story_id'])
     story_most_recent = story.storyId_to_most_recent_addition(session['story_id'])
     return render_template('add_to_story.html', title = story_title, last_addition = story_most_recent, \
-                           authentication_message = auth)
+                           valid_user = story.check_editable(session['id'], session['story_id']))
  
 
 if __name__ == "__main__":
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("CREATE TABLE IF NOT EXISTS full_stories(title TEXT, story_content TEXT, storyId INTEGER, most_recent_addition TEXT)")
+    c.execute("CREATE TABLE IF NOT EXISTS logins(user TEXT, password TEXT, id INTEGER)")
+    c.execute("CREATE TABLE IF NOT EXISTS partial_stories(userId INTEGER, storyId INTEGER, addition_content TEXT, sequenceId INTEGER)")
+    
     app.debug = True #Remove when finished with the project
     app.run()

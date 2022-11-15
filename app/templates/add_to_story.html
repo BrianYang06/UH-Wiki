@@ -19,6 +19,7 @@
 	<br>
 	<br>
 	
+	{% if valid_user %}
 	<form action="/add_to_story_page" method="post">
       enter story below
       <br>
@@ -29,8 +30,10 @@
 
       <input type= "submit" name= "sub1">
     </form>
+	{% else %}
+	You have already edited this story
+	{% endif %}
 
-    <h2>{{ authentication_message }}</h2>
     <br>
     <button type="button" name="leave">
       <a href="{{ url_for('home_page') }}">go home</a>

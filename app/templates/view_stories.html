@@ -6,13 +6,13 @@
   </head>
 
   <body>
-    <center><h1>ALL OF THE STORIES</h1></center>
+    <center><h1>ALL OF THE STORIES YOU CAN ADD TO</h1></center>
 	{% for row in data %}
 		<h2> {{ row[0] }}   id: {{ row[2] }}</h2>
 		{{ row[3] }}
 		
 		<form action="/add_to_story_page" method="get">
-			<input type= "submit" name= {{ row[2] }}>
+			<input type= "submit" name= {{ row[2] }} value="edit">
 		</form>
 	
     {% endfor %}
