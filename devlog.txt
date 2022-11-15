@@ -4,8 +4,7 @@ Justin Mohabir
 Verit Li
 pd 8
 ---------------------
-<Project Title/Description>
-
+Arvys'/A collaborative story telling wiki, where users can share and edit each other's stories. To begin contributing to the page you must login and contributions are limited to one for every story.  
 
  ______   ______   __   __   __       ______   _______
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\
@@ -18,7 +17,7 @@ pd 8
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 
-paulY -- 2022-11-1 14:00
+brianY -- 2022-11-1 14:00
 --------------------------------------------------------------
 Updated Readme with all the required components, but not everything is correct... + all the other files
 ==============================================================
@@ -30,15 +29,15 @@ veritL -- 2022-11-2 8:22
 --------------------------------------------------------------
 Added target send date to design.pdf
 ==============================================================
-paulY -- 2022-11-2 12:15
+brianY -- 2022-11-2 12:15
 --------------------------------------------------------------
 Added login/sigup html files + added flask to the python file
 ==============================================================
-paulY -- 2022-11-2 12:36
+brianY -- 2022-11-2 12:36
 --------------------------------------------------------------
 Added redirects to login/signup page from home(bug: html paragraph not enclosed in button tag is a button)
 ==============================================================
-paulY -- 2022-11-2 13:03
+brianY -- 2022-11-2 13:03
 --------------------------------------------------------------
 Fixed bug in previous devlog post
 ==============================================================
@@ -59,43 +58,43 @@ Revised design doc; Changes:
                           - added delete draft button to Create Story Page and Add-to-Story Page
 			  TODO: update and keep assigning Task Breakdown
 ==============================================================
-paulY -- 2022-11-5 2:44
+brianY -- 2022-11-5 2:44
 --------------------------------------------------------------
 Updated devlog to template provided
 ==============================================================
-paulY -- 2022-11-5 3:01
+brianY -- 2022-11-5 3:01
 --------------------------------------------------------------
 Took 19_session and implemented it into the wiki. Now we can login/out.
 ==============================================================
-paulY -- 2022-11-5 7:48
+brianY -- 2022-11-5 7:48
 --------------------------------------------------------------
 Created login database with python file that'll be able to create ID and add command line arguments as username and passwords to table. Command line arguments aren't perfect yet but ssh into school computer to do this make brain hurt.
 ==============================================================
-paulY -- 2022-11-5 8:56
+brianY -- 2022-11-5 8:56
 --------------------------------------------------------------
 Login.py works now to take in command line arguments to append to the login data db
 ==============================================================
-paulY -- 2022-11-5 9:46
+brianY -- 2022-11-5 9:46
 --------------------------------------------------------------
 Can now signup to create a username and password with >0 letters that is added to db. Still need to check database for overlapping users.
 ==============================================================
-paulY -- 2022-11-7 12:29
+brianY -- 2022-11-7 12:29
 --------------------------------------------------------------
 Changed the login to what verit provided in 19_session (much cleaner and doesn't use multiple html files to indicate success in login) | Implemented that for signup
 ==============================================================
-paulY -- 2022-11-7 17:41
+brianY -- 2022-11-7 17:41
 --------------------------------------------------------------
 login.py works for what it does but not incorporated into the __init__.py| import files now instead of using OS and SYS module
 ==============================================================
-paulY -- 2022-11-8 16:52
+brianY -- 2022-11-8 16:52
 --------------------------------------------------------------
 Added function in signup to check for username conflicts and if password is too short
 ==============================================================
-paulY -- 2022-11-9 18:38
+brianY -- 2022-11-9 18:38
 --------------------------------------------------------------
 Implemented that function into __init__ (tested and worked but more extensive testing required)
 ==============================================================
-paulY -- 2022-11-9 18:54
+brianY -- 2022-11-9 18:54
 --------------------------------------------------------------
 Implemented login.py into init (tested and worked but more extensive testing required)
 ==============================================================
@@ -147,7 +146,7 @@ Test untested functions
 Added a story_id key in the session dictionary
 NEED to make it so update_full_story(story_id, added_content) updates the most_recent_addition collumn in the table
 ==============================================================
-BrianY -- 2022-11-14 23:21
+brianY -- 2022-11-14 23:21
 --------------------------------------------------------------
 Added the revised headfake design doc into the repo
 ==============================================================
@@ -172,3 +171,8 @@ Made it so database and tables are created upon running __init__.py
 veritL -- 2022-11-15 00:53
 --------------------------------------------------------------
 Deleted error.html and response.html templates
+==============================================================
+brianY -- 2022-11-15 1:05
+--------------------------------------------------------------
+Updated Readme to be more descriptive
+==============================================================
