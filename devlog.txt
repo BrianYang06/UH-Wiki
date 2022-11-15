@@ -151,8 +151,15 @@ BrianY -- 2022-11-14 23:21
 --------------------------------------------------------------
 Added the revised headfake design doc into the repo
 ==============================================================
+<<<<<<< HEAD
 veritL -- 2022-11-15 00:29
 --------------------------------------------------------------
 Made it so users that had contributed cannot add to the same story again
 Made it so update_full_story(story_id, added_content) updates the most_recent_addition collumn in the table
 Made it so the view stories page only diplays stories the user can add to
+=======
+brianY -- 2022-11-15  00:31
+--------------------------------------------------------------
+Cleared typos on login.html and changed type to password in forms of login.html/signup.html
+==============================================================
+>>>>>>> 7f1c7701d1c632640bcefeaaacc1cf6ffdd1ebb2
